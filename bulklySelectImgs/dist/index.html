@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Vue-filter</title>
+  <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css'><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div id="filter_example">
+    <div class="container">
+        <select class="select-pet" v-model="filter">
+            <option value="all" selected>All</option>
+            <option value="cat">Cat</option>
+            <option value="dog">Dog</option>
+            <option value="rabbit">Rabbit</option>
+        </select>
+
+        <select class="select-pet" v-model="checkedNames" >
+                <option value="default" selected>默认灵感库</option>
+                <option value="user" selected>user</option>
+            </select>
+        <div class="row">
+            <div class="col-6"  v-for="item in items" v-show="filter=='all' || filter==item.vtype">
+                <div class="pet-card" v-bind:style="{ 'background-image': 'url(' + item.vimg + ')' }" ></div>
+
+                <div>
+                    <input type="checkbox" id="jack" v-bind:value=item.vimg v-model="checkedNames">
+                    <span>Checked names: {{ checkedNames }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js'></script>
+<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
